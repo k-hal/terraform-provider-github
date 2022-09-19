@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/client9/misspell v0.3.4
 	github.com/golangci/golangci-lint v1.25.1
-	github.com/google/go-github/v47 v47.0.0
+	github.com/google/go-github/v47 v47.1.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/shurcooL/githubv4 v0.0.0-20220520033151-0b4e3294ff00
 	github.com/shurcooL/graphql v0.0.0-20220606043923-3cf50f8a0a29 // indirect
