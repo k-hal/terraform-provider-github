@@ -26,17 +26,17 @@ func (*UniqByLine) Name() string {
 }
 
 func (p *UniqByLine) Process(issues []result.Issue) ([]result.Issue, error) {
-	if !p.cfg.Output.UniqByLine {
+	if !p.cfg.Issues.UniqByLine {
 		return issues, nil
 	}
 
-	return filterIssues(issues, p.shouldPassIssue), nil
+	return filterIssuesUnsafe(issues, p.shouldPassIssue), nil
 }
 
 func (*UniqByLine) Finish() {}
 
 func (p *UniqByLine) shouldPassIssue(issue *result.Issue) bool {
-	if issue.Replacement != nil && p.cfg.Issues.NeedFix {
+	if issue.SuggestedFixes != nil && p.cfg.Issues.NeedFix {
 		// if issue will be auto-fixed we shouldn't collapse issues:
 		// e.g. one line can contain 2 misspellings, they will be in 2 issues and misspell should fix both of them.
 		return true

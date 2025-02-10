@@ -35,8 +35,8 @@ func (p *MaxSameIssues) Process(issues []result.Issue) ([]result.Issue, error) {
 		return issues, nil
 	}
 
-	return filterIssues(issues, func(issue *result.Issue) bool {
-		if issue.Replacement != nil && p.cfg.Issues.NeedFix {
+	return filterIssuesUnsafe(issues, func(issue *result.Issue) bool {
+		if issue.SuggestedFixes != nil && p.cfg.Issues.NeedFix {
 			// we need to fix all issues at once => we need to return all of them
 			return true
 		}
